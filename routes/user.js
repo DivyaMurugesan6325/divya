@@ -1,0 +1,14 @@
+const express = require('express');
+const userController= require('../controllers/user');
+const {addUserValidation} = require('../validator/user/userValidation');
+const{loginValidation} = require('../validator/user/userValidation');
+const checkAuthMiddle = require('../middlewares/auth');
+const router = express.Router();
+router.post('/signup',addUserValidation,userController.signup);
+router.post('/login',loginValidation,userController.login);
+router.patch('/update/:id',checkAuthMiddle.checkauth,userController.updateuser);
+router.delete('/delete/:id',checkAuthMiddle.checkauth,userController.deleteUser);
+//router.delete('/delete/:id',userController.deleteUser);
+router.get('/getuser/:id',checkAuthMiddle.checkauth,userController.findbyiduser);
+router.get('/findAll',checkAuthMiddle.checkauth,userController.findAllUser);
+module.exports = router;
