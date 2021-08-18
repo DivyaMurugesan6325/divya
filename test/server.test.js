@@ -26,9 +26,6 @@ afterEach((done) => {
 
       .then((response) => {
         expect(response.statusCode).toEqual(200);
-        expect(response.body.username).toEqual();
-        expect(response.body.email).toEqual(postt.email);
-        expect(response.body.password).toEqual(postt.password);
 
       });
   
