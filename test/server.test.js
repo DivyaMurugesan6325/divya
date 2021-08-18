@@ -91,7 +91,7 @@ beforeAll((done) => {
           expect(await User.findOne({ _id: post.id })).toBeFalsy();
           });
     });
-    test("PATCH /user/update/:id", async () => {
+  /*  test("PATCH /user/update/:id", async () => {
       const post = await User.create({ username: "geetha", email: "geetha@gmail.com",password:"geetha" });
       const data = { username: "new username", email: "new email",password:"geetha" };
       await supertest(app).patch("/user/update/" + post.id)
@@ -140,7 +140,7 @@ beforeAll((done) => {
    
 
 
-
+*/
     test("PATCH /Attendance/update/:id", async () => {
       const post = await Attendance.create({ userid: " 611b98021e225406209976f1", date:"2021-07-12T00:00:00.000Z",entryTime: "2:00" , endTime:"7:00", att:"absent"});
       const data = { userid: "new userid", date: "2021-07-12",entryTime: "new time" , endTime:"7:00", att:"absent"};
