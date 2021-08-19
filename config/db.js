@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
 const mongoose = require('mongoose');
  const dotenv = require("dotenv");
+ const logger = require('../logger');
  dotenv.config();
 const connection = async () =>{
      // eslint-disable-next-line no-useless-catch

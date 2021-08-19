@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('../models/user');
 const Message = require('../helper/constant');
+const logger = require('../logger');
+
 /** Sinup */
 const signup = async (req, res) => {
     try {
@@ -20,11 +22,18 @@ const signup = async (req, res) => {
                                password: hash
                             });
                             const result = await  user.save()
+                           console.log(result);
+                           // logger.error(result);
+                           logger.info(result);
+
+
+
                                 if(result){
                                     res.status(200).json({
                                        message: Message.successmsg2,
                                        data : result
                                    }) 
+
                                 }
                       })
                 })
@@ -43,6 +52,7 @@ try{
          if(user == null){
              res.status(500).json({
                  message : Message.errormsg4
+
             })
         } else{
                 bcrypt.compare(req.body.password, user.password, async (err, result) =>{

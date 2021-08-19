@@ -3,3 +3,4 @@ node_modules
 .eslintrc.json
 heelo.js
 coverage
+error.log
