@@ -19,9 +19,15 @@ const logger = winston.createLogger({
       new winston.transports.MongoDB({
         level :'info',
         db: "mongodb://localhost:27017/test1",
+        options: {
+          useUnifiedTopology: true
+      },
+      collection: 'user',
 
-
-      }),
+      format: format.combine(
+        format.timestamp(),
+        format.json())
+}),
 
       new winston.transports.File({
         level: 'error',
@@ -33,6 +39,8 @@ const logger = winston.createLogger({
           format.timestamp({format: 'MMM-DD-YYYY HH:mm:ss'}),
           format.align(),
           format.printf(info => `${info.level}: ${[info.timestamp]}: ${info.message}`),
+          format.printf((info) => `${info}`),
+
       )
   
     }),
